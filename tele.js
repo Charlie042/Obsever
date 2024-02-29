@@ -1,6 +1,8 @@
+
 class telephone{
     constructor(){
          this.phoneNum = new Set();
+         this.observers = []
     }
     AddPhoneNumber(num){
         this.phoneNum.add(num);
@@ -14,6 +16,16 @@ class telephone{
         }else{
             console.log("Phone number not found")
         }
+    }
+    addObserver(num){
+        this.observers.push(num)
+    }
+    removeObserver(num){
+        this.observers = this.observers.filter((observer) => observer !== num);
+    }
+    notify(data){
+        this.observers.forEach((observer) => observer(data));
+
     }
 }
 {{ }}
