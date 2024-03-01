@@ -1,5 +1,5 @@
-
-class telephone{
+const {   phoneObserver, customerObserver } = require('./observer')
+ class Telephone{
     constructor(){
          this.phoneNum = new Set();
          this.observers = []
@@ -12,7 +12,7 @@ class telephone{
     }
     DialPhoneNumber(num){
         if(this.phoneNum.has(num)){
-            console.log(`${num} is dailing`)
+            this.notifyObservers(num)
         }else{
             console.log("Phone number not found")
         }
@@ -23,9 +23,11 @@ class telephone{
     removeObserver(num){
         this.observers = this.observers.filter((observer) => observer !== num);
     }
-    notify(data){
-        this.observers.forEach((observer) => observer(data));
+    notifyObservers(data){
+        this.observers.forEach(observer => {
+            observer.notify(data);
+        });
 
     }
 }
-{{ }}
+module.exports.Telephone = Telephone;
