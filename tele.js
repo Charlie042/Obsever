@@ -1,4 +1,4 @@
-const {   phoneObserver, customerObserver } = require('./observer')
+
  class Telephone{
     constructor(){
          this.phoneNum = new Set();
